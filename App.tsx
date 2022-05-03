@@ -1,40 +1,93 @@
 import * as React from 'react'
-import { Button, Text, Image } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
+import { Button, View, Text } from 'react-native'
+import { NavigationContainer, useFocusEffect } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-function LogoTitle() {
-  return <Image style={{ width: 50, height: 50 }} source={require('./assets/icon-menu-hamburger-png-white.png')} />
-}
+function SettingsScreen({ navigation }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      alert('SettingsScreen was focused')
+      // Do something when the screen is focused
+      return () => {
+        alert('SettingsScreen was unfocused')
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      }
+    }, [])
+  )
 
-function HomeScreen({ navigation }) {
-  const [count, setCount] = React.useState(0)
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => <Button onPress={() => setCount((c) => c + 1)} title="+1" />
-    })
-  }, [navigation, setCount])
-
-  return <Text>Count: {count}</Text>
-}
-
-const Stack = createNativeStackNavigator()
-
-function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={({ navigation, route }) => ({
-            headerTitle: (props) => <LogoTitle {...props} />
-          })}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Settings Screen</Text>
+      <Button title="Go to Profile" onPress={() => navigation.navigate('Profile')} />
+    </View>
   )
 }
 
-export default App
+function ProfileScreen({ navigation }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      alert('ProfileScreen was focused')
+      // Do something when the screen is focused
+      return () => {
+        alert('ProfileScreen was unfocused')
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      }
+    }, [])
+  )
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Profile Screen</Text>
+      <Button title="Go to Settings" onPress={() => navigation.navigate('Settings')} />
+    </View>
+  )
+}
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button title="Go to Details" onPress={() => navigation.navigate('Details')} />
+    </View>
+  )
+}
+
+function DetailsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
+      <Button title="Go to Details... again" onPress={() => navigation.push('Details')} />
+    </View>
+  )
+}
+const Tab = createBottomTabNavigator()
+const SettingsStack = createNativeStackNavigator()
+const HomeStack = createNativeStackNavigator()
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Settings1">
+          {() => (
+            <SettingsStack.Navigator>
+              <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+              <SettingsStack.Screen name="Profile" component={ProfileScreen} />
+            </SettingsStack.Navigator>
+          )}
+        </Tab.Screen>
+        <Tab.Screen name="Home1">
+          {() => (
+            <HomeStack.Navigator>
+              <HomeStack.Screen name="Home" component={HomeScreen} />
+              <HomeStack.Screen name="Details" component={DetailsScreen} />
+            </HomeStack.Navigator>
+          )}
+        </Tab.Screen>
+      </Tab.Navigator>
+    </NavigationContainer>
+  )
+}
