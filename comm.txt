@@ -1,0 +1,7 @@
+expo init react_native_navigation
+
+npm install @react-navigation/native
+expo install react-native-screens react-native-safe-area-context
+npx pod-install ios
+
+npm install @react-navigation/native-stack
