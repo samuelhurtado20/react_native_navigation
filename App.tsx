@@ -97,7 +97,7 @@ export default function App() {
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>
-        <Tab.Screen name="Home">
+        <Tab.Screen name="Home" options={{ tabBarBadge: 3 }}>
           {() => (
             <HomeStack.Navigator>
               <HomeStack.Screen name="Home Screen" component={HomeScreen} />
