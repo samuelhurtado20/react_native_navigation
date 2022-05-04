@@ -3,6 +3,7 @@ import { Button, View, Text } from 'react-native'
 import { NavigationContainer, useFocusEffect } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Ionicons } from '@expo/vector-icons'
 
 function SettingsScreen({ navigation }) {
   useFocusEffect(
@@ -70,19 +71,36 @@ const HomeStack = createNativeStackNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Settings1">
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline'
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'ios-text' : 'ios-list'
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />
+          },
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray'
+        })}
+      >
+        <Tab.Screen name="Settings">
           {() => (
             <SettingsStack.Navigator>
-              <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+              <SettingsStack.Screen name="Settings Screen" component={SettingsScreen} />
               <SettingsStack.Screen name="Profile" component={ProfileScreen} />
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>
-        <Tab.Screen name="Home1">
+        <Tab.Screen name="Home">
           {() => (
             <HomeStack.Navigator>
-              <HomeStack.Screen name="Home" component={HomeScreen} />
+              <HomeStack.Screen name="Home Screen" component={HomeScreen} />
               <HomeStack.Screen name="Details" component={DetailsScreen} />
             </HomeStack.Navigator>
           )}
