@@ -5,3 +5,8 @@ expo install react-native-screens react-native-safe-area-context
 npx pod-install ios
 
 npm install @react-navigation/native-stack
+
+
+npm install react-native-reanimated@~2.2.0
+
+npx react-native start --reset-cache
