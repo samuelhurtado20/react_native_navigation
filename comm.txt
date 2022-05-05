@@ -47,16 +47,18 @@ npx react-native init MySocialNetwork --version 0.63.2
   #################################################
   #################################################
 
-jwt_front
-expo init react_native_jwt_frontend
-cd react_native_jwt_frontend
-npm i --save react-native-paper
-npm i --save @react-navigation/native
-expo install react-native-screens react-native-safe-area-context
-npm i --save @react-navigation/native-stack
-npm i --save @react-navigation/material-top-tabs react-native-tab-view
-expo install react-native-pager-view
-npm audit fix --force
+REACT_NATIVE_JWT_FRONTEND
+  expo init react_native_jwt_frontend
+  cd react_native_jwt_frontend
+  npm i --save react-native-paper
+  npm i --save @react-navigation/native
+  expo install react-native-screens react-native-safe-area-context
+  npm i --save @react-navigation/native-stack
+  npm i --save @react-navigation/material-top-tabs react-native-tab-view
+  expo install react-native-pager-view
+  npm i axios
+  npm i --save @react-native-async-storage/async-storage
+
 
 
 
