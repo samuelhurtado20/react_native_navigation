@@ -46,3 +46,28 @@ npx react-native init MySocialNetwork --version 0.63.2
   npm install react-native-reanimated@~2.2.0
   #################################################
   #################################################
+
+jwt_front
+expo init react_native_jwt_frontend
+cd react_native_jwt_frontend
+npm i --save react-native-paper
+npm i --save @react-navigation/native
+expo install react-native-screens react-native-safe-area-context
+npm i --save @react-navigation/native-stack
+npm i --save @react-navigation/material-top-tabs react-native-tab-view
+expo install react-native-pager-view
+npm audit fix --force
+
+
+
+
+  #################################################
+  #################################################
+npm i -g yarn
+expo init nombre_proyecto 
+yarn add react-native-paper
+yarn add @react-navigation/native
+expo install react-native-screens react-native-safe-area-context
+yarn add @react-navigation/native-stack
+yarn add @react-navigation/material-top-tabs react-native-tab-view
+expo install react-native-pager-view
