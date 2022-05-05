@@ -10,3 +10,39 @@ npm install @react-navigation/native-stack
 npm install react-native-reanimated@~2.2.0
 
 npx react-native start --reset-cache
+
+
+watchman watch-del-all
+delete node modules
+npm install
+npm start --reset-cache
+rm -rf /tmp/metro-*
+
+expo doctor --fix-dependencies
+
+expo init social-network
+npm install @react-navigation/native
+npm install @react-navigation/stack @react-native-community/masked-view react-native-screens react-native-safe-area-context react-native-gesture-handler
+
+
+npx react-native init MySocialNetwork --version 0.63.2
+
+#################################################
+#################################################
+####Setting up the development environment
+  npm install -g expo-cli
+  expo init AwesomeProject
+  cd AwesomeProject
+  npm start # you can also use: expo start
+####Getting started
+  npm install @react-navigation/native
+  expo install react-native-screens react-native-safe-area-context
+  npm install react-native-screens react-native-safe-area-context
+  sudo gem install cocoapods
+  npx pod-install ios
+  npm install @react-navigation/native-stack
+  npm install @react-navigation/bottom-tabs
+  npm install @react-navigation/drawer
+  npm install react-native-reanimated@~2.2.0
+  #################################################
+  #################################################
